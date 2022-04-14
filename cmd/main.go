@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/skurtz97/internal/http"
-	"github.com/skurtz97/internal/repo"
-	"github.com/skurtz97/internal/splat"
+	"github.com/skurtz97/splat/internal/http"
+	"github.com/skurtz97/splat/internal/repo"
+	"github.com/skurtz97/splat/internal/splat"
 	"go.uber.org/zap"
 )
 

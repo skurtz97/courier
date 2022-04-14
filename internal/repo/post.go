@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	uuid "github.com/satori/go.uuid"
-	"github.com/skurtz97/internal/splat"
+	"github.com/skurtz97/splat/internal/splat"
 )
 
 func (cp *PostgresPool) GetPost(ctx context.Context, id string) (splat.Post, error) {
