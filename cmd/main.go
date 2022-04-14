@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"os"
 
+	"go.uber.org/zap"
+
 	"github.com/skurtz97/splat/internal/http"
 	"github.com/skurtz97/splat/internal/repo"
 	"github.com/skurtz97/splat/internal/splat"
-	"go.uber.org/zap"
 )
 
 type Config struct {

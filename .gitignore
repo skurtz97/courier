@@ -4,3 +4,4 @@ dockerfile_best_practices.md
 README.md
 docker-compose.yml
 app.dockerfile
+.env
