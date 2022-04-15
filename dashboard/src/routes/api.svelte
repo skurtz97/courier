@@ -32,18 +32,5 @@
         flex: 5;
         background-color: #e5eef5   
     }
-	h1 {
-		margin: 0rem;
-		font-size: 32px;
-		font-weight: bold;
-        height: 60px;
-        max-height: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start; 
-        padding: 1rem 1rem 1rem 1rem;
-		
-	}
 	
 </style>
