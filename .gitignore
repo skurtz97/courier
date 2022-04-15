@@ -1,4 +1,6 @@
-db/
+db/db.dev.env
+dashboard/node_modules
+dashboard/.svelte-kit
 docker-compose.yml
 dockerfile_best_practices.md
 README.md
