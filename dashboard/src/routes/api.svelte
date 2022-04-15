@@ -1,11 +1,11 @@
 <script>
-    import RouteTable from '../components/RouteTable.svelte';
+    import Table from '../components/table.svelte';
 </script>
 
 <main>
     <section>
         <div class="route-list">
-            <RouteTable />
+            <Table />
         </div>
         <div class="output">
             <p>Output</p>
