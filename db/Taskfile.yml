@@ -1,0 +1,18 @@
+version: '3'
+
+dotenv: ['db.dev.env']
+
+tasks:
+  start:
+    cmds:
+      - docker run -p $HOST_PORT:$CONTAINER_PORT --env-file db.dev.env --name splat_db -d postgres:14.2-alpine
+  stop:
+    cmds:
+      - docker stop splat_db
+      - docker rm splat_db
+  clean: 
+    cmds: 
+      - ./scripts/test_clean.fish
+
+    
+  
