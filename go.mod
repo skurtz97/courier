@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/go-chi/chi/v5 v5.0.7
-	github.com/gorilla/mux v1.8.0
 	github.com/jackc/pgx/v5 v5.0.0-alpha.2
 	go.uber.org/zap v1.21.0
 
