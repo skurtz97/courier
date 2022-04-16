@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/go-chi/chi/v5"
 	"github.com/skurtz97/splat/internal/splat"
 )
 
@@ -37,9 +37,9 @@ func (s *Server) ListPosts(w http.ResponseWriter, r *http.Request) {
 func (s *Server) GetPost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	id := mux.Vars(r)["id"]
-
+	id := chi.URLParam(r, "id")
 	post, err := s.service.GetPost(id)
+
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(`{"message": "error getting post", "error:" : "` + err.Error() + `"}`))
@@ -115,7 +115,7 @@ func (s *Server) UpdatePost(w http.ResponseWriter, r *http.Request) {
 func (s *Server) DeletePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 
-	id := mux.Vars(r)["id"]
+	id := chi.URLParam(r, "id")
 
 	if err := s.service.DeletePost(id); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
