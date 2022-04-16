@@ -29,11 +29,12 @@
 		margin: 0;
 		height: 100%;
 		display: flex;
+		background-color: #dce3e9;
 	}
 
 	nav {
-		background: #676778;
-		color: #ffffff;
+		background: #ffffff;
+		color: #334155;
 		flex: 20;
 		height: 100%;
 		width: 240px;
@@ -42,7 +43,7 @@
 		display: flex;
 		flex-direction: column;
 		text-transform: uppercase;
-		box-shadow: 1px 0px 2px 2px #e0e0e7;
+		box-shadow: 1px 0px 2px 2px #ffffff;
 	}
 	h1 {
 		margin: 0rem;
@@ -55,7 +56,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 1rem 0rem 1rem 0rem;
-		box-shadow: 0px 2px 2px 0px #4d4d58;
 		flex: 1;
 	}
 	ul {
@@ -73,16 +73,15 @@
 	li {
 		font-size: 20px;
 	}
-	li:hover {
-		background: #515153;
+	li > a:hover {
+		color: #7a8696;
 	}
 	li > a {
-		color: #ffffff;
+		color: #334155;
 		text-decoration: none;
 		display: flex;
 		width: calc(100% - 2rem);
 		height: calc(100% - 2rem);
 		padding: 1rem 1rem 1rem 1rem;
-		box-shadow: 0px 2px 2px 0px #595966;
 	}
 </style>

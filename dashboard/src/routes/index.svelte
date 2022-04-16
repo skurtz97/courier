@@ -9,7 +9,6 @@
 
 <style>
 	main {
-		background: #ffffff;
 		flex: 8;
 		padding: 1rem;
 		margin: 0rem;

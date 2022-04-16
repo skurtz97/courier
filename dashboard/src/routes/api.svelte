@@ -1,12 +1,13 @@
-<script>
-	import Table from '../components/table.svelte';
+<script lang="ts">
+	import List from '../components/list.svelte';
 </script>
 
 <main>
 	<section>
-		<div class="route-list">
-			<Table />
+		<div class="list-card">
+			<List />
 		</div>
+
 		<div class="output">
 			<p>Output</p>
 		</div>
@@ -24,11 +25,15 @@
 		flex-direction: row;
 		flex: 10;
 	}
-	.route-list {
+	.list-card {
+		margin: 0 0 0 0;
+		padding: 0;
 		flex: 5;
+		padding: 2rem;
 	}
 	.output {
 		flex: 5;
-		background-color: #e5eef5;
+		padding: 2rem;
+		background-color: #f1f5f9;
 	}
 </style>
