@@ -10,15 +10,14 @@
 <style>
 	main {
 		background: #ffffff;
-        flex: 8;
-        padding: 1rem;
-        margin: 0rem;
+		flex: 8;
+		padding: 1rem;
+		margin: 0rem;
 	}
 
-    h1 {
-        margin: 0rem;
-        padding: 0rem;
-        font-size: 40px;
-    }
+	h1 {
+		margin: 0rem;
+		padding: 0rem;
+		font-size: 40px;
+	}
 </style>
-
