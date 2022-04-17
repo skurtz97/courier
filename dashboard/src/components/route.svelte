@@ -5,32 +5,48 @@
 </script>
 
 {#if route.method === "GET"}
-  <li class="li-get">
-    <span class="span-get">{route.method}</span>
-    <span>{route.path}</span>
-    <span class="description">{route.description}</span>
-    <ChevronDown />
+  <li class="get">
+    <div class="text">
+      <span class="method">{route.method}</span>
+      <span class="path">{route.path}</span>
+      <span class="desc">{route.description}</span>
+    </div>
+    <div class="icon-container">
+      <ChevronDown />
+    </div>
   </li>
 {:else if route.method === "POST"}
-  <li class="li-post">
-    <span class="span-post">{route.method}</span>
-    <span>{route.path}</span>
-    <span class="description">{route.description}</span>
-    <ChevronDown />
+  <li class="post">
+    <div class="text">
+      <span class="method">{route.method}</span>
+      <span class="path">{route.path}</span>
+      <span class="desc">{route.description}</span>
+    </div>
+    <div class="icon-container">
+      <ChevronDown />
+    </div>
   </li>
 {:else if route.method === "PUT"}
-  <li class="li-put">
-    <span class="span-put">{route.method}</span>
-    <span>{route.path}</span>
-    <span class="description">{route.description}</span>
-    <ChevronDown />
+  <li class="put">
+    <div class="text">
+      <span class="method">{route.method}</span>
+      <span class="path">{route.path}</span>
+      <span class="desc">{route.description}</span>
+    </div>
+    <div class="icon-container">
+      <ChevronDown />
+    </div>
   </li>
 {:else}
-  <li class="li-delete">
-    <span class="span-delete">{route.method}</span>
-    <span>{route.path}</span>
-    <span class="description">{route.description}</span>
-    <ChevronDown />
+  <li class="delete">
+    <div class="text">
+      <span class="method">{route.method}</span>
+      <span class="path">{route.path}</span>
+      <span class="desc">{route.description}</span>
+    </div>
+    <div class="icon-container">
+      <ChevronDown />
+    </div>
   </li>
 {/if}
 
@@ -45,17 +61,51 @@
     border: 1px solid var(--slate-300);
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
-  .li-get {
+  .text {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+  }
+  .get {
     background-color: var(--green-200);
   }
-  .li-post {
+  .get:hover {
+    background-color: var(--green-300);
+  }
+  .post {
     background-color: var(--sky-200);
   }
-  .li-put {
+  .post:hover {
+    background-color: var(--sky-300);
+  }
+  .put {
     background-color: var(--orange-200);
   }
-  .li-delete {
+  .put:hover {
+    background-color: var(--orange-300);
+  }
+  .delete {
     background-color: var(--red-200);
+  }
+  .delete:hover {
+    background-color: var(--red-300);
+  }
+  .method {
+    font-weight: bold;
+    width: 6rem;
+  }
+  .path {
+    flex: 1;
+    text-align: end;
+  }
+  .desc {
+    flex: 1;
+    text-align: end;
+  }
+  .icon-container {
+    height: 2rem;
+    width: 2rem;
   }
 </style>

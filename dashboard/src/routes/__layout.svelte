@@ -2,13 +2,16 @@
   <nav>
     <div class="nav-content">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/api">API</a></li>
-        <li><a href="/storage">Storage</a></li>
-        <li><a href="/logs">Logs</a></li>
-        <li><a href="/metrics">Metrics</a></li>
-        <li class="spacer">Spacer</li>
-        <li class="settings"><a href="/settings">Settings</a></li>
+        <div class="nav-top">
+          <li><a href="/">Home</a></li>
+          <li><a href="/api">API</a></li>
+          <li><a href="/storage">Storage</a></li>
+          <li><a href="/logs">Logs</a></li>
+          <li><a href="/metrics">Metrics</a></li>
+        </div>
+        <div class="nav-bottom">
+          <li class="settings"><a href="/settings">Settings</a></li>
+        </div>
       </ul>
     </div>
   </nav>
@@ -16,13 +19,17 @@
 </div>
 
 <style>
-  :global(body, html, .svelte-body) {
-    height: 100%;
+  /* CSS Reset */
+  :global(html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video) {
     margin: 0;
     padding: 0;
-    font-family: "Noto Sans", sans-serif;
-    background-color: var(--slate-200);
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
   }
+
+  /* Color definitions */
   :global(:root) {
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
@@ -50,6 +57,7 @@
     --red-800: #991b1b;
     --red-600: #dc2626;
     --red-400: #f87171;
+    --red-300: #fca5a5;
     --red-200: #fecaca;
 
     --green-900: #064e3b;
@@ -64,6 +72,16 @@
     --orange-200: #fde68a;
   }
 
+  /* Make sure svelte generated containers are full height, also set global baseline font and bg color */
+  :global(body, html, .svelte-body) {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans", sans-serif;
+    background-color: var(--slate-200);
+  }
+
+  /* Same as above, make sure the root element we defined is full height */
   .root {
     display: flex;
     flex-direction: row;
@@ -74,6 +92,7 @@
     background: var(--slate-600);
     color: var(--sky-100);
     width: 8rem;
+    height: 100%;
   }
 
   .nav-content {
@@ -81,21 +100,14 @@
     letter-spacing: 0.15rem;
     height: 100%;
     text-align: left;
-    padding: 1rem;
   }
   ul {
     display: flex;
     flex-direction: column;
-    height: 100%;
     list-style-type: none;
-    padding: 0;
-  }
-  .spacer {
-    flex: 1;
-    visibility: hidden;
-  }
-  li {
-    padding: 0.5rem 0;
+    justify-content: space-between;
+    padding: 1rem;
+    height: calc(100% - 2rem);
   }
 
   li > a {

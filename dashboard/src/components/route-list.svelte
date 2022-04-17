@@ -44,7 +44,7 @@
 <style>
   ul {
     list-style: none;
-    padding: 2rem;
-    margin: 2rem;
+    padding: 0rem;
+    margin: 1rem 2rem 1rem 0.5rem;
   }
 </style>
