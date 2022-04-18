@@ -12,10 +12,13 @@ content-type: application/json
 accept: application/json
 
 {
-  "title": "My first post",
-  "content": "This is my first post"
+  "title": "Third post",
+  "content": "I'm going to make this list longersasdopasjdasjdasdaj"
 }
 
 ### GET POST BY ID ###
-GET http://localhost:8080/api/v1/post/1 HTTP/1.1
+GET http://localhost:8080/api/v1/post/09d9159b-c7fb-4be4-ae26-8ab3b83d8954 HTTP/1.1
+content-type: application/json
+accept: application/json
+
 
