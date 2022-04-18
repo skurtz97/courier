@@ -1,5 +1,4 @@
 <script lang="ts">
-  import ChevronDown from "../icons/chevron-down.svelte";
   import type { Route } from "src/types/route";
   export let route: Route;
   export let setSelected: (id: number) => void;
@@ -10,9 +9,6 @@
     <span class="method">{route.method}</span>
     <span class="path">{route.path}</span>
     <span class="desc">{route.description}</span>
-  </div>
-  <div class="icon-container">
-    <ChevronDown />
   </div>
 </li>
 
@@ -33,9 +29,9 @@
     cursor: grab;
   }
   .text {
-    width: 75%;
     display: flex;
     flex-direction: row;
+    flex: 1;
   }
   .get {
     background-color: var(--green-200);
@@ -72,9 +68,5 @@
   .desc {
     flex: 1;
     text-align: end;
-  }
-  .icon-container {
-    height: 2rem;
-    width: 2rem;
   }
 </style>
