@@ -2,9 +2,12 @@
   import type { Route } from "src/types/route";
   export let route: Route;
   export let setSelected: (id: number) => void;
+  export let isSelected: boolean;
 </script>
 
-<li class={`${route.method.toLowerCase()}`} on:click={() => setSelected(route.id)}>
+<li
+  class={`${route.method.toLowerCase()} ${isSelected ? `${route.method.toLowerCase()}-selected` : ""}`}
+  on:click={() => setSelected(route.id)}>
   <div class="text">
     <span class="method">{route.method}</span>
     <span class="path">{route.path}</span>
@@ -39,10 +42,17 @@
   .get:hover {
     background-color: var(--green-300);
   }
+  .get-selected {
+    background-color: var(--green-300);
+  }
+
   .post {
     background-color: var(--sky-200);
   }
   .post:hover {
+    background-color: var(--sky-300);
+  }
+  .post-selected {
     background-color: var(--sky-300);
   }
   .put {
@@ -51,10 +61,16 @@
   .put:hover {
     background-color: var(--orange-300);
   }
+  .put-selected {
+    background-color: var(--orange-300);
+  }
   .delete {
     background-color: var(--red-200);
   }
   .delete:hover {
+    background-color: var(--red-300);
+  }
+  .delete-selected {
     background-color: var(--red-300);
   }
   .method {

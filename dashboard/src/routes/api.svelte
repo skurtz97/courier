@@ -3,16 +3,19 @@
   import FetchInput from "../components/fetch-input.svelte";
   import { routes } from "../stores/route-store";
   import type { Route } from "../types/route";
+
   let selected: Route = $routes[0];
+  let selectedId = 0;
 
   function setSelected(id: number) {
     selected = $routes[id];
+    selectedId = id;
   }
 </script>
 
 <main>
   <div class="routes">
-    <RouteList routes={$routes} {setSelected} />
+    <RouteList routes={$routes} {setSelected} {selectedId} />
     <FetchInput route={selected} />
   </div>
   <div class="output">

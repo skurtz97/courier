@@ -1,0 +1,21 @@
+### HEALTH CHECK ###
+GET http://localhost:8080/api/v1/ping HTTP/1.1
+
+
+### LIST POSTS ###
+GET http://localhost:8080/api/v1/post HTTP/1.1
+
+
+### CREATE POST ###
+POST http://localhost:8080/api/v1/post HTTP/1.1
+content-type: application/json
+accept: application/json
+
+{
+  "title": "My first post",
+  "content": "This is my first post"
+}
+
+### GET POST BY ID ###
+GET http://localhost:8080/api/v1/post/1 HTTP/1.1
+

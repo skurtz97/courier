@@ -3,29 +3,96 @@
   export let route: Route;
 </script>
 
-<div>
-  <h1>{`${route.method} ${route.path} ${route.description}`}</h1>
+<div class="input">
+  <div class="route-text">
+    <span class="method">{route.method}</span>
+    <span class="path">{route.path}</span>
+    <span class="description">{route.description}</span>
+  </div>
+
   <form>
-    <h2>Route Parameters</h2>
+    <div class="input-group">
+      <h2>URL Parameter</h2>
+      {#if route.url_param !== null}
+        <div class="labeled-input">
+          <label label="url-parameter" for="url-parameter">id: integer</label>
+          <input type="number" name="url-parameter" />
+        </div>
+      {:else}
+        <div>
+          <h2>No URL parameter</h2>
+        </div>
+      {/if}
+    </div>
+
+    <div class="input-group">
+      <h2>Query Parameters</h2>
+      {#if route.query_params !== null}{:else}
+        <div>
+          <h2>No query parameters</h2>
+        </div>
+      {/if}
+    </div>
   </form>
 </div>
 
 <style>
-  div {
+  .input {
     padding: 1rem;
     height: 50%;
     background-color: var(--slate-300);
     box-shadow: 0px 0px 2px 2px var(--slate-400);
     overflow-y: scroll;
-    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
-
-  h1 {
+  .route-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--slate-500);
     font-size: 1.5rem;
-    margin: 0;
-    padding: 0.5rem;
   }
 
-  h2 {
+  .route-text > .method {
+    font-weight: bold;
+    text-align: start;
+    width: 86px;
+  }
+  .route-text > .path {
+    text-align: end;
+    flex: 2;
+  }
+  .route-text > .description {
+    text-align: end;
+    flex: 2;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  .input-group > h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .labeled-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .labeled-input > label {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .labeled-input > input {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--slate-200);
+    border: none;
   }
 </style>

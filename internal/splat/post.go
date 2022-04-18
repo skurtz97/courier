@@ -16,8 +16,8 @@ type Post struct {
 type Store interface {
 	GetPost(ctx context.Context, id string) (Post, error)
 	ListPosts(ctx context.Context) ([]Post, error)
-	CreatePost(ctx context.Context, post Post) error
-	UpdatePost(ctx context.Context, post Post) error
+	CreatePost(ctx context.Context, post *Post) error
+	UpdatePost(ctx context.Context, post *Post) error
 	DeletePost(ctx context.Context, id string) error
 }
 
@@ -55,7 +55,7 @@ func (s *Service) ListPosts() ([]Post, error) {
 	return posts, nil
 }
 
-func (s *Service) CreatePost(post Post) error {
+func (s *Service) CreatePost(post *Post) error {
 	s.log.Info("creating post: ", zap.Any("post", post))
 
 	if err := s.Store.CreatePost(context.Background(), post); err != nil {
@@ -65,7 +65,7 @@ func (s *Service) CreatePost(post Post) error {
 	return nil
 }
 
-func (s *Service) UpdatePost(post Post) error {
+func (s *Service) UpdatePost(post *Post) error {
 	s.log.Info("updating post: ", zap.Any("post", post))
 
 	if err := s.Store.UpdatePost(context.Background(), post); err != nil {

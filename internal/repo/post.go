@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/jackc/pgtype"
 	uuid "github.com/satori/go.uuid"
 	"github.com/skurtz97/splat/internal/splat"
 )
@@ -26,9 +27,14 @@ func (cp *PostgresPool) ListPosts(ctx context.Context) ([]splat.Post, error) {
 	}
 	defer rows.Close()
 
+	var postId pgtype.UUID
 	for rows.Next() {
 		var post splat.Post
-		if err := rows.Scan(&post.Id, &post.Title, &post.Content); err != nil {
+		if err := rows.Scan(&postId, &post.Title, &post.Content); err != nil {
+			return nil, fmt.Errorf("error getting posts: %w", err)
+		}
+		err = postId.AssignTo(&post.Id)
+		if err != nil {
 			return nil, fmt.Errorf("error getting posts: %w", err)
 		}
 		posts = append(posts, post)
@@ -37,7 +43,7 @@ func (cp *PostgresPool) ListPosts(ctx context.Context) ([]splat.Post, error) {
 	return posts, nil
 }
 
-func (cp *PostgresPool) CreatePost(ctx context.Context, post splat.Post) error {
+func (cp *PostgresPool) CreatePost(ctx context.Context, post *splat.Post) error {
 	post.Id = uuid.NewV4().String()
 	_, err := cp.pool.Exec(ctx, `INSERT INTO posts (id, title, content) VALUES ($1, $2, $3)`, post.Id, post.Title, post.Content)
 	if err != nil {
@@ -47,7 +53,7 @@ func (cp *PostgresPool) CreatePost(ctx context.Context, post splat.Post) error {
 	return nil
 }
 
-func (cp *PostgresPool) UpdatePost(ctx context.Context, post splat.Post) error {
+func (cp *PostgresPool) UpdatePost(ctx context.Context, post *splat.Post) error {
 	_, err := cp.pool.Exec(ctx, `UPDATE posts SET title = $1, content = $2 WHERE id = $3`, post.Title, post.Content, post.Id)
 	if err != nil {
 		return fmt.Errorf("error updating post: %w", err)

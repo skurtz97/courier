@@ -74,7 +74,7 @@ func (s *Server) CreatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := s.service.CreatePost(post); err != nil {
+	if err := s.service.CreatePost(&post); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(`{"message": "error creating post", "error:" : "` + err.Error() + `"}`))
 		return
@@ -102,7 +102,7 @@ func (s *Server) UpdatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := s.service.UpdatePost(post); err != nil {
+	if err := s.service.UpdatePost(&post); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(`{"message": "error updating post", "error:" : "` + err.Error() + `"}`))
 		return

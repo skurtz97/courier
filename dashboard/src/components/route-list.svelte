@@ -3,11 +3,12 @@
   import RouteListItem from "./route-list-item.svelte";
   export let routes: Route[];
   export let setSelected: (id: number) => void;
+  export let selectedId: number;
 </script>
 
 <ul>
   {#each routes as route, index (route.id)}
-    <RouteListItem {route} {setSelected} />
+    <RouteListItem {route} {setSelected} isSelected={selectedId === index} />
   {/each}
 </ul>
 
