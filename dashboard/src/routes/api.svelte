@@ -1,6 +1,7 @@
 <script lang="ts">
   import RouteList from "../components/route-list.svelte";
   import FetchInput from "../components/fetch-input.svelte";
+  import FetchOutput from "../components/fetch-output.svelte";
   import { routes } from "../stores/route-store";
   import type { Route } from "../types/route";
 
@@ -19,7 +20,7 @@
     <FetchInput route={selected} />
   </div>
   <div class="output">
-    <p>Output</p>
+    <FetchOutput />
   </div>
 </main>
 
@@ -37,5 +38,6 @@
   }
   .output {
     width: 50%;
+    margin: 0.5rem;
   }
 </style>

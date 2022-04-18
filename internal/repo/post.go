@@ -11,9 +11,14 @@ import (
 
 func (cp *PostgresPool) GetPost(ctx context.Context, id string) (splat.Post, error) {
 	var post splat.Post
+	var postId pgtype.UUID
 	row := cp.pool.QueryRow(ctx, `SELECT id, title, content FROM posts WHERE id = $1`, id)
-	if err := row.Scan(&post.Id, &post.Title, &post.Content); err != nil {
+	if err := row.Scan(&postId, &post.Title, &post.Content); err != nil {
 		return splat.Post{}, fmt.Errorf("error getting post: %w", err)
+	}
+	err := postId.AssignTo(&post.Id)
+	if err != nil {
+		return splat.Post{}, fmt.Errorf("error assigning post id: %w", err)
 	}
 
 	return post, nil
