@@ -1,11 +1,12 @@
 <script lang="ts">
   import ChevronDown from "../icons/chevron-down.svelte";
-  import type { RouteProps } from "src/types/route";
-  export let route: RouteProps;
+  import type { Route } from "src/types/route";
+  export let route: Route;
+  export let setSelected: (id: number) => void;
 </script>
 
 {#if route.method === "GET"}
-  <li class="get">
+  <li class="get" on:click={() => setSelected(route.id)}>
     <div class="text">
       <span class="method">{route.method}</span>
       <span class="path">{route.path}</span>
@@ -16,7 +17,7 @@
     </div>
   </li>
 {:else if route.method === "POST"}
-  <li class="post">
+  <li class="post" on:click={() => setSelected(route.id)}>
     <div class="text">
       <span class="method">{route.method}</span>
       <span class="path">{route.path}</span>
@@ -27,7 +28,7 @@
     </div>
   </li>
 {:else if route.method === "PUT"}
-  <li class="put">
+  <li class="put" on:click={() => setSelected(route.id)}>
     <div class="text">
       <span class="method">{route.method}</span>
       <span class="path">{route.path}</span>
@@ -38,7 +39,7 @@
     </div>
   </li>
 {:else}
-  <li class="delete">
+  <li class="delete" on:click={() => setSelected(route.id)}>
     <div class="text">
       <span class="method">{route.method}</span>
       <span class="path">{route.path}</span>
@@ -53,8 +54,8 @@
 <style>
   li {
     color: #000;
-    padding: 1rem;
-    margin: 1rem;
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
     font-size: large;
     box-shadow: 1px 1px 1px 1px rgb(202, 200, 200);
     border-radius: 0.25rem;
@@ -62,6 +63,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  li:hover {
+    cursor: grab;
   }
   .text {
     width: 75%;
