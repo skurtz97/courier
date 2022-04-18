@@ -5,51 +5,16 @@
   export let setSelected: (id: number) => void;
 </script>
 
-{#if route.method === "GET"}
-  <li class="get" on:click={() => setSelected(route.id)}>
-    <div class="text">
-      <span class="method">{route.method}</span>
-      <span class="path">{route.path}</span>
-      <span class="desc">{route.description}</span>
-    </div>
-    <div class="icon-container">
-      <ChevronDown />
-    </div>
-  </li>
-{:else if route.method === "POST"}
-  <li class="post" on:click={() => setSelected(route.id)}>
-    <div class="text">
-      <span class="method">{route.method}</span>
-      <span class="path">{route.path}</span>
-      <span class="desc">{route.description}</span>
-    </div>
-    <div class="icon-container">
-      <ChevronDown />
-    </div>
-  </li>
-{:else if route.method === "PUT"}
-  <li class="put" on:click={() => setSelected(route.id)}>
-    <div class="text">
-      <span class="method">{route.method}</span>
-      <span class="path">{route.path}</span>
-      <span class="desc">{route.description}</span>
-    </div>
-    <div class="icon-container">
-      <ChevronDown />
-    </div>
-  </li>
-{:else}
-  <li class="delete" on:click={() => setSelected(route.id)}>
-    <div class="text">
-      <span class="method">{route.method}</span>
-      <span class="path">{route.path}</span>
-      <span class="desc">{route.description}</span>
-    </div>
-    <div class="icon-container">
-      <ChevronDown />
-    </div>
-  </li>
-{/if}
+<li class={`${route.method.toLowerCase()}`} on:click={() => setSelected(route.id)}>
+  <div class="text">
+    <span class="method">{route.method}</span>
+    <span class="path">{route.path}</span>
+    <span class="desc">{route.description}</span>
+  </div>
+  <div class="icon-container">
+    <ChevronDown />
+  </div>
+</li>
 
 <style>
   li {
