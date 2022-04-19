@@ -4,13 +4,12 @@ tasks:
   dev:
     cmds:
       - docker-compose up -d
-      - yarn run dev --cwd /home/sean/Projects/splat/admin
+      - yarn --cwd /home/sean/Projects/splat/admin run dev 
     
   build:
     cmds:
       - docker-compose build
-      - yarn run build --cwd /home/sean/Projects/splat/admin
-  
+      - yarn --cwd /home/sean/Projects/splat/admin run build
   stop:
     cmds:
       - docker-compose down

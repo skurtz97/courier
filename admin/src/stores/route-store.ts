@@ -9,7 +9,7 @@ export const routes = writable<Route[]>([
     path: "/api/v1/ping",
     description: "Ping the server",
     url_param: null,
-    query_params: null,
+    query_params: [],
   },
   {
     id: 1,
@@ -18,7 +18,7 @@ export const routes = writable<Route[]>([
     path: "/api/v1/posts",
     description: "List all posts",
     url_param: null,
-    query_params: null,
+    query_params: [],
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const routes = writable<Route[]>([
     path: "/api/v1/posts",
     description: "Create a new post",
     url_param: null,
-    query_params: null,
+    query_params: [],
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ export const routes = writable<Route[]>([
       name: "id",
       type: "integer",
     },
-    query_params: null,
+    query_params: [],
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ export const routes = writable<Route[]>([
       name: "id",
       type: "integer",
     },
-    query_params: null,
+    query_params: [],
   },
   {
     id: 5,
@@ -63,6 +63,6 @@ export const routes = writable<Route[]>([
       name: "id",
       type: "integer",
     },
-    query_params: null,
+    query_params: [],
   },
 ]);

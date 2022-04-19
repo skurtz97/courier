@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Button from "../components/button.svelte";
   import type { Route } from "../types/route";
   export let route: Route;
 </script>
@@ -24,15 +25,20 @@
         </div>
       {/if}
     </div>
-
     <div class="input-group">
       <h2>Query Parameters</h2>
-      {#if route.query_params !== null}{:else}
-        <div>
-          <h2>No query parameters</h2>
+      {#each route.query_params as param}
+        <div class="labeled-input">
+          <label label={param.name} for={param.name}>{param.name}: {param.type}</label>
+          <input type="text" name={param.name} />
         </div>
-      {/if}
+      {:else}
+        <div>
+          <h2>No Query Parameters</h2>
+        </div>
+      {/each}
     </div>
+    <Button>Submit</Button>
   </form>
 </div>
 

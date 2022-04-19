@@ -5,7 +5,7 @@ export type Route = {
   path: string;
   description: string;
   url_param: UrlParam | null;
-  query_params: QueryParam[] | null;
+  query_params: QueryParam[];
 };
 
 export type UrlParam = {

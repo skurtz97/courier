@@ -1,20 +1,9 @@
+<script lang="ts">
+  import Nav from "../components/nav.svelte";
+</script>
+
 <div class="root">
-  <nav>
-    <div class="nav-content">
-      <ul>
-        <div class="nav-top">
-          <li><a href="/">Home</a></li>
-          <li><a href="/api">API</a></li>
-          <li><a href="/storage">Storage</a></li>
-          <li><a href="/logs">Logs</a></li>
-          <li><a href="/metrics">Metrics</a></li>
-        </div>
-        <div class="nav-bottom">
-          <li class="settings"><a href="/settings">Settings</a></li>
-        </div>
-      </ul>
-    </div>
-  </nav>
+  <Nav />
   <slot />
 </div>
 
