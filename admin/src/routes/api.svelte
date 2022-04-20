@@ -12,12 +12,19 @@
     selected = $routes[id];
     selectedId = id;
   }
+
+  async function handleSubmit(e: SubmitEvent) {
+    console.log(selected);
+    const res = await fetch(`http://localhost:8080${selected.path}`, {
+      method: "GET",
+    });
+  }
 </script>
 
 <main>
   <div class="routes">
     <RouteList routes={$routes} {setSelected} {selectedId} />
-    <FetchInput route={selected} />
+    <FetchInput route={selected} onSubmit={handleSubmit} />
   </div>
   <div class="output">
     <FetchOutput />

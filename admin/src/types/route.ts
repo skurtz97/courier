@@ -8,12 +8,13 @@ export type Route = {
   query_params: QueryParam[];
 };
 
+export type ParamType = "string" | "integer" | "boolean";
 export type UrlParam = {
   name: string;
-  type: "string" | "integer" | "boolean";
+  type: ParamType;
 };
 
 export type QueryParam = {
   name: string;
-  type: "string" | "integer" | "boolean";
+  type: ParamType;
 };
