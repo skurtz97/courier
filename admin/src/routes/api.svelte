@@ -17,7 +17,11 @@
     console.log(selected);
     const res = await fetch(`http://localhost:8080${selected.path}`, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    console.log(res.body);
   }
 </script>
 

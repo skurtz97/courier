@@ -9,9 +9,20 @@ import (
 	"github.com/skurtz97/splat/internal/splat"
 )
 
+type PingResponse struct {
+	Message string `json:"message"`
+}
+
 func (s *Server) Ping(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.Write([]byte(`{"message": "alive"}`))
+	jsonRes := PingResponse{Message: "alive"}
+	jsonResBytes, err := json.Marshal(jsonRes)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(`{"message": "error marshalling ping", "error:" : "` + err.Error() + `"}`))
+		return
+	}
+	w.Write(jsonResBytes)
 }
 
 func (s *Server) ListPosts(w http.ResponseWriter, r *http.Request) {

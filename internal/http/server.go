@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/cors"
 	"github.com/skurtz97/splat/internal/splat"
 	"go.uber.org/zap"
 )
@@ -31,6 +32,15 @@ func NewServer(log *zap.Logger, service *splat.Service) *Server {
 		router:  chi.NewRouter(),
 		service: service,
 	}
+
+	s.router.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:3000"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: false,
+		MaxAge:           300,
+	}))
 
 	s.router.Use(JSONMiddleware)
 	s.router.Use(TimeoutMiddleware)

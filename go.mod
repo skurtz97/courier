@@ -15,6 +15,7 @@ require (
 )
 
 require (
+	github.com/go-chi/cors v1.2.1
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/puddle v1.2.1 // indirect
