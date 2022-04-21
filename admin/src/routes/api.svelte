@@ -164,13 +164,6 @@
 		display: flex;
 		flex-direction: column;
 	}
-	textarea {
-		flex: 1;
-		resize: none;
-		background-color: #e6e7e7;
-		border-radius: 0.25rem;
-		border: 2px solid #cacaca;
-	}
 	.output {
 		flex: 1;
 		padding: 1rem;
