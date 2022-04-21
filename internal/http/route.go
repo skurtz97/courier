@@ -17,15 +17,15 @@ type Route struct {
 }
 
 type UrlParam struct {
-	Name        string `json:"name,omitempty"`
-	Type        string `json:"type,omitempty"`
-	Description string `json:"description,omitempty"`
+	Name        string `json:"name"`
+	Type        string `json:"type"`
+	Description string `json:"description"`
 }
 
 type QueryParam struct {
-	Name        string `json:"name,omitempty"`
-	Type        string `json:"type,omitempty"`
-	Description string `json:"description,omitempty"`
+	Name        string `json:"name"`
+	Type        string `json:"type"`
+	Description string `json:"description"`
 }
 
 // ReadRoutesFile reads the routes definition file ("routes.json" at project root) and returns a slice of routes.

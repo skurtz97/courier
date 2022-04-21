@@ -15,7 +15,7 @@
     "description": "Get a post by id",
     "url_param": {
       "name": "id",
-      "type": "int",
+      "type": "string",
       "description": "The post id"
     }
   },
@@ -30,7 +30,7 @@
     "description": "Update a user by id",
     "url_param": {
       "name": "id",
-      "type": "int",
+      "type": "string",
       "description": "The post id"
     }
   },
@@ -40,7 +40,7 @@
     "description": "Delete a post by id",
     "url_param": {
       "name": "id",
-      "type": "int",
+      "type": "string",
       "description": "The post id"
     }
   }

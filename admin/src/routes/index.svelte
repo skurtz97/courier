@@ -1,8 +1,10 @@
-<svelte:head>
-  <title>Home</title>
-</svelte:head>
-
 <main>
-  <h1>Dashboard</h1>
-  <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+	<h1>Welcome to Admin Home</h1>
 </main>
+
+<style>
+	main {
+		flex: 1;
+		padding: 1rem;
+	}
+</style>
