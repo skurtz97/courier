@@ -22,7 +22,7 @@ services:
     container_name: "dev-api"
     build:
       context: .
-      dockerfile: api.dockerfile 
+      dockerfile: Dockerfile
     ports:
       - "${API_HOST_PORT}:${API_CONTAINER_PORT}"
     environment:
