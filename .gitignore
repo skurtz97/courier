@@ -1,9 +1,3 @@
-db/db.dev.env
 admin/node_modules
 admin/.svelte-kit
-docker-compose.yml
-dockerfile_best_practices.md
-README.md
-docker-compose.yml
-app.dockerfile
 .env
