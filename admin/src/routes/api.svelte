@@ -7,6 +7,8 @@
 
   let selected: Route = $routes[0];
   let selectedId = 0;
+  let response = {};
+  let body;
 
   function setSelected(id: number) {
     selected = $routes[id];
@@ -14,24 +16,39 @@
   }
 
   async function handleSubmit(e: SubmitEvent) {
-    console.log(selected);
+    let requestBody;
+    if (body !== undefined && body !== "") {
+      try {
+        requestBody = body;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    if (selected.method !== "POST" && selected.method !== "PUT") {
+      requestBody = undefined;
+    }
+
     const res = await fetch(`http://localhost:8080${selected.path}`, {
-      method: "GET",
+      method: `${selected.method}`,
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
+      body: requestBody,
     });
-    console.log(res.body);
+    const data = await res.json();
+    console.log(data);
+    response = data;
   }
 </script>
 
 <main>
   <div class="routes">
     <RouteList routes={$routes} {setSelected} {selectedId} />
-    <FetchInput route={selected} onSubmit={handleSubmit} />
+    <FetchInput route={selected} onSubmit={handleSubmit} bind:body />
   </div>
   <div class="output">
-    <FetchOutput />
+    <FetchOutput {response} />
   </div>
 </main>
 

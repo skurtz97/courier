@@ -6,6 +6,8 @@
 
   export let onSubmit: (e: SubmitEvent) => void;
   export let route: Route;
+  export let body;
+
   function paramTypeToInputType(paramType: ParamType): InputType {
     switch (paramType) {
       case "string":
@@ -43,6 +45,10 @@
     {:else}
       <p class="form-text">No query parameters</p>
     {/each}
+    {#if route.method === "POST"}
+      <h2 class="form-input-heading">Request Body</h2>
+      <textarea class="form-input-body" bind:value={body} />
+    {/if}
   </div>
   <Button>Submit</Button>
 </form>
@@ -93,5 +99,13 @@
   }
   .form-input-heading:first-of-type {
     margin-top: 0;
+  }
+
+  .form-input-body {
+    border: none;
+    border-bottom: 1px solid var(--slate-500);
+    padding: 0.5rem;
+    width: 90%;
+    height: 10rem;
   }
 </style>
