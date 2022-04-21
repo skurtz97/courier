@@ -1,11 +1,8 @@
 <!-- https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/ -->
 <script lang="ts">
-	import Prism from "prismjs/";
-	import FormEventHandler from "svelte";
+	let value = "";
 
-	let value: string = "";
-
-	$value: {
+	function update() {
 		let textarea = document.querySelector<HTMLTextAreaElement>("#editing");
 		if (textarea) {
 			value = textarea.value;
@@ -16,6 +13,7 @@
 					.replace(new RegExp("<", "g"), "<"); /* Global RegExp */
 			}
 		}
+		scroll();
 	}
 
 	function scroll() {
@@ -31,7 +29,7 @@
 </script>
 
 <div class="editor">
-	<textarea id="editing" spellcheck="false" bind:value on:input={scroll} on:scroll={scroll} />
+	<textarea id="editing" spellcheck="false" on:input={update} on:scroll={scroll} />
 	<pre id="highlighting" aria-hidden="true">
         <code class="language-html" id="highlighting-content" />
     </pre>

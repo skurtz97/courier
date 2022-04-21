@@ -5,7 +5,7 @@
 
 	// the route we have selected, defaults to the first one
 	// this value is set by the index in #each
-	let selected: number = 0;
+	let selected = 0;
 	onMount(async () => {
 		const rts = await getRoutes("http://localhost:8080/api/v1/routes");
 		console.log(rts);
