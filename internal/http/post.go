@@ -14,7 +14,6 @@ type PingResponse struct {
 }
 
 func (s *Server) Ping(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	jsonRes := PingResponse{Message: "alive"}
 	jsonResBytes, err := json.Marshal(jsonRes)
 	if err != nil {
@@ -26,8 +25,6 @@ func (s *Server) Ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) ListPosts(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-
 	posts, err := s.service.ListPosts()
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -46,8 +43,6 @@ func (s *Server) ListPosts(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) GetPost(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-
 	id := chi.URLParam(r, "id")
 	post, err := s.service.GetPost(id)
 
@@ -68,8 +63,6 @@ func (s *Server) GetPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) CreatePost(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-
 	postBytes, err := io.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -96,8 +89,6 @@ func (s *Server) CreatePost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) UpdatePost(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-
 	postBytes, err := io.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -124,8 +115,6 @@ func (s *Server) UpdatePost(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) DeletePost(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-
 	id := chi.URLParam(r, "id")
 
 	if err := s.service.DeletePost(id); err != nil {

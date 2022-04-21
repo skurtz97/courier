@@ -1,0 +1,47 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/ping",
+    "description": "Ping the server"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/posts",
+    "description": "Get all posts"
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/posts/{id}",
+    "description": "Get a post by id",
+    "url_param": {
+      "name": "id",
+      "type": "int",
+      "description": "The post id"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/posts",
+    "description": "Create a post"
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/posts/{id}",
+    "description": "Update a user by id",
+    "url_param": {
+      "name": "id",
+      "type": "int",
+      "description": "The post id"
+    }
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/posts/{id}",
+    "description": "Delete a post by id",
+    "url_param": {
+      "name": "id",
+      "type": "int",
+      "description": "The post id"
+    }
+  }
+]

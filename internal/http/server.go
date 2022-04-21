@@ -19,6 +19,7 @@ type ServerConfig struct {
 }
 
 type Server struct {
+	routes  []Route
 	log     *zap.Logger
 	router  *chi.Mux
 	service *splat.Service
@@ -27,7 +28,13 @@ type Server struct {
 
 func NewServer(log *zap.Logger, service *splat.Service) *Server {
 	log.Info("setting up routes")
+	routes, err := ReadRoutesFile("routes.json")
+	if err != nil {
+		log.Error("error reading routes file", zap.Error(err))
+	}
+
 	s := &Server{
+		routes:  routes,
 		log:     log,
 		router:  chi.NewRouter(),
 		service: service,
@@ -46,6 +53,7 @@ func NewServer(log *zap.Logger, service *splat.Service) *Server {
 	s.router.Use(TimeoutMiddleware)
 	s.router.Use(LoggingMiddleware(log))
 
+	s.router.Get("/api/v1/routes", s.ListRoutes)
 	s.router.Get("/api/v1/ping", s.Ping)
 	s.router.Get("/api/v1/post", s.ListPosts)
 	s.router.Post("/api/v1/post", s.CreatePost)

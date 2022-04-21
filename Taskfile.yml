@@ -1,15 +1,15 @@
 version: '3'
 
 tasks:
-  dev:
-    cmds:
-      - docker-compose up -d
-      - yarn --cwd /home/sean/Projects/splat/admin run dev 
-    
   build:
     cmds:
       - docker-compose build
-      - yarn --cwd /home/sean/Projects/splat/admin run build
+  start:
+    cmds:
+      - docker-compose up
   stop:
     cmds:
       - docker-compose down
+  clean:
+    cmds:
+      - docker system prune
