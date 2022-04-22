@@ -15,7 +15,6 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
-		"@types/prismjs": "^1.26.0",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
 		"@typescript-eslint/parser": "^5.10.1",
 		"eslint": "^7.32.0",
@@ -32,6 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"codejar": "^3.6.0",
 		"prismjs": "^1.28.0"
 	}
 }
