@@ -3,20 +3,21 @@ version: '3'
 tasks:
   all:
     cmds:
-      - docker-compose build
-      - docker-compose up
+      - task: build
+      - task: up
   build:
     cmds:
       - docker-compose build
-  start:
+  up:
     cmds:
-      - docker-compose up
-  stop:
+      - docker-compose up -d
+  down:
     cmds:
       - docker-compose down
   clean:
     cmds:
       - docker system prune
-  admin:
+  dev:
+    dir: admin
     cmds:
-      - pnpm run -C admin dev
+      - pnpm run dev
