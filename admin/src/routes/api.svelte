@@ -1,16 +1,32 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { routes, getRoutes } from "$stores/routes";
+	import type { Route } from "$types/route";
 	import Editor from "$components/editor.svelte";
 
 	// the route we have selected, defaults to the first one
 	// this value is set by the index in #each
 	let selected = 0;
+	let localRoutes: Route[];
 	onMount(async () => {
 		const rts = await getRoutes("http://localhost:8080/api/v1/routes");
 		console.log(rts);
 		if (rts) {
 			$routes = rts;
+			localRoutes = rts;
+		} else {
+			localRoutes = [
+				{
+					method: "GET",
+					path: "/api/v1/ping",
+					description: "Ping the server",
+					url_param: {
+						name: "",
+						type: "integer"
+					},
+					query_params: null
+				}
+			];
 		}
 	});
 </script>
@@ -35,11 +51,11 @@
 			<div class="params">
 				<div class="input-group">
 					<h1>Path Parameters</h1>
-					{#if $routes[selected] && $routes[selected].url_param.name !== ""}
+					{#if !localRoutes[selected] || !localRoutes[selected].url_param}
+						<h3>No path parameters</h3>
+					{:else}
 						<label for={`pparam_${selected}`}>{$routes[selected].url_param.name}</label>
 						<input type="text" name={`pparam_${selected}`} />
-					{:else}
-						<h3>No path parameters</h3>
 					{/if}
 				</div>
 				<div class="input-group">
@@ -58,7 +74,7 @@
 			</div>
 			<div class="body">
 				<h1>Request Body</h1>
-				<Editor />
+				<Editor height={580} />
 			</div>
 		</form>
 	</section>

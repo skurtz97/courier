@@ -5,6 +5,7 @@
 	import { indentWithTab } from "@codemirror/commands";
 	import { json } from "@codemirror/lang-json";
 
+	export let height = 300;
 	let elem: HTMLDivElement;
 	let view: EditorView;
 	onMount(() => {
