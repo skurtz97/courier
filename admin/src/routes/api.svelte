@@ -163,6 +163,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		max-height: 600px;
 	}
 	.output {
 		flex: 1;
