@@ -1,40 +1,40 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { routes, getRoutes } from "$stores/routes";
+
 	import type { Route } from "$types/route";
 	import Editor from "$components/editor.svelte";
 
 	// the route we have selected, defaults to the first one
 	// this value is set by the index in #each
 	let selected = 0;
-	let localRoutes: Route[];
-	onMount(async () => {
-		const rts = await getRoutes("http://localhost:8080/api/v1/routes");
-		console.log(rts);
-		if (rts) {
-			$routes = rts;
-			localRoutes = rts;
-		} else {
-			localRoutes = [
-				{
-					method: "GET",
-					path: "/api/v1/ping",
-					description: "Ping the server",
-					url_param: {
-						name: "",
-						type: "integer"
-					},
-					query_params: null
-				}
-			];
+	let routes: Route[] = [
+		{
+			method: "GET",
+			path: "/api/v1/ping",
+			description: "Ping the server",
+			url_param: {
+				name: "",
+				type: "string"
+			},
+			query_params: null
 		}
+	];
+	onMount(async () => {
+		routes = await getRoutes();
 	});
+	async function getRoutes(): Promise<Route[]> {
+		console.log("getting routes");
+		const res = await fetch("http://localhost:8080/api/v1/routes");
+		const data: Route[] = await res.json();
+		console.log(data);
+		return data;
+	}
 </script>
 
 <main>
 	<section class="routes">
 		<ul>
-			{#each $routes as route, index}
+			{#each routes as route, index}
 				<li
 					class={`${route.method.toLowerCase()} ${selected === index ? "selected" : ""}`}
 					on:click={() => (selected = index)}
@@ -51,16 +51,16 @@
 			<div class="params">
 				<div class="input-group">
 					<h1>Path Parameters</h1>
-					{#if !localRoutes[selected] || !localRoutes[selected].url_param}
-						<h3>No path parameters</h3>
-					{:else}
-						<label for={`pparam_${selected}`}>{$routes[selected].url_param.name}</label>
+					{#if routes && routes[selected].url_param.name !== ""}
+						<label for={`pparam_${selected}`}>{routes[selected].url_param.name}</label>
 						<input type="text" name={`pparam_${selected}`} />
+					{:else}
+						<h3>No path parameters</h3>
 					{/if}
 				</div>
 				<div class="input-group">
 					<h1>Query Parameters</h1>
-					{#if $routes[selected] && $routes[selected].query_params}
+					{#if routes && routes[selected].query_params}
 						<!--
                         {#each $routes[selected].query_params as param}
                             <label for={`qparam_${selected}`}>{param.name}</label>
@@ -74,12 +74,12 @@
 			</div>
 			<div class="body">
 				<h1>Request Body</h1>
-				<Editor height={580} />
+				<Editor height={580} editable="true" />
 			</div>
 		</form>
 	</section>
 	<section class="output">
-		<h1>Output</h1>
+		<Editor height={580} editable="false" />
 	</section>
 </main>
 

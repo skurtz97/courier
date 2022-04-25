@@ -8,6 +8,7 @@ specifiers:
   '@codemirror/lang-json': github:codemirror/lang-json
   '@codemirror/language': ^0.20.0
   '@codemirror/state': ^0.20.0
+  '@codemirror/theme-one-dark': ^0.20.0
   '@codemirror/view': ^0.20.2
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
@@ -32,6 +33,7 @@ devDependencies:
   '@codemirror/lang-json': github.com/codemirror/lang-json/b487db92a09e21c341fe58f6d0ca5632bfa109d0
   '@codemirror/language': 0.20.0
   '@codemirror/state': 0.20.0
+  '@codemirror/theme-one-dark': 0.20.0
   '@codemirror/view': 0.20.2
   '@sveltejs/adapter-auto': 1.0.0-next.38
   '@sveltejs/kit': 1.0.0-next.320_svelte@3.47.0
@@ -176,6 +178,15 @@ packages:
 
   /@codemirror/text/0.19.6:
     resolution: {integrity: sha512-T9jnREMIygx+TPC1bOuepz18maGq/92q2a+n4qTqObKwvNMg+8cMTslb8yxeEDEq7S3kpgGWxgO1UWbQRij0dA==}
+    dev: true
+
+  /@codemirror/theme-one-dark/0.20.0:
+    resolution: {integrity: sha512-iqTKaiOZddwlc2rYF+9D60Gfyz9EsSawVejSjyP2FCtOwZ1X0frG5/ByTKH5FBDD2+P7W8+h/OIG4r5dWq4bgA==}
+    dependencies:
+      '@codemirror/language': 0.20.0
+      '@codemirror/state': 0.20.0
+      '@codemirror/view': 0.20.2
+      '@lezer/highlight': 0.16.0
     dev: true
 
   /@codemirror/view/0.19.48:

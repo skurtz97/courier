@@ -3,6 +3,7 @@ import type { Route } from "$types/route";
 
 export const routes = writable<Route[]>([]);
 
+/*
 export const getRoutes = async (url: string): Promise<Route[] | undefined> => {
 	try {
 		const res = await fetch(url);
@@ -15,4 +16,4 @@ export const getRoutes = async (url: string): Promise<Route[] | undefined> => {
 	} catch (err) {
 		console.log(err);
 	}
-};
+};*/

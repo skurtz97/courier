@@ -6,14 +6,14 @@ import (
 
 	"go.uber.org/zap"
 
+	"github.com/skurtz97/splat/internal/db"
 	"github.com/skurtz97/splat/internal/http"
-	"github.com/skurtz97/splat/internal/repo"
 	"github.com/skurtz97/splat/internal/splat"
 )
 
 type Config struct {
-	Server   http.ServerConfig   `json:"server"`
-	Postgres repo.PostgresConfig `json:"postgres"`
+	Server   http.ServerConfig `json:"server"`
+	Postgres db.PostgresConfig `json:"postgres"`
 }
 
 // run initializes dependencies and runs the program
@@ -21,7 +21,7 @@ func run(log *zap.Logger) error {
 	log.Info("starting program")
 
 	// database initialization
-	db, err := repo.NewPostgresPool()
+	db, err := db.NewPostgresPool()
 	if err != nil {
 		return fmt.Errorf("failed initializing database: %w", err)
 	}

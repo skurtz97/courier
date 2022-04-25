@@ -13,7 +13,7 @@ type Post struct {
 	Content string
 }
 
-type Store interface {
+type PostStore interface {
 	GetPost(ctx context.Context, id string) (Post, error)
 	ListPosts(ctx context.Context) ([]Post, error)
 	CreatePost(ctx context.Context, post *Post) error
@@ -23,10 +23,10 @@ type Store interface {
 
 type Service struct {
 	log   *zap.Logger
-	Store Store
+	Store PostStore
 }
 
-func NewService(log *zap.Logger, store Store) *Service {
+func NewService(log *zap.Logger, store PostStore) *Service {
 	return &Service{
 		log:   log,
 		Store: store,
