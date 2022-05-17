@@ -1,0 +1,8 @@
+###
+POST https://localhost:3000/api/v1/post HTTP/1.1
+
+{
+    "title": "My first post",
+    "content": "This is my first post",
+    "author": "1"
+}
