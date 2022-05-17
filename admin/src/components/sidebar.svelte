@@ -2,9 +2,6 @@
 	<ul>
 		<li><a href="/">Home</a></li>
 		<li><a href="/api">API</a></li>
-		<li><a href="/storage">Storage</a></li>
-		<li><a href="/logs">Logs</a></li>
-		<li><a href="/metrics">Metrics</a></li>
 		<li><a href="/settings">Settings</a></li>
 	</ul>
 </nav>

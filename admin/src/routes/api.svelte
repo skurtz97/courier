@@ -17,6 +17,46 @@
 				type: "string"
 			},
 			query_params: null
+		},
+		{
+			method: "GET",
+			path: "/api/v1/post",
+			description: "List all posts",
+			url_param: {
+				name: "",
+				type: "string"
+			},
+			query_params: null
+		},
+		{
+			method: "POST",
+			path: "/api/v1/post",
+			description: "Create a post",
+			url_param: {
+				name: "",
+				type: "string"
+			},
+			query_params: null
+		},
+		{
+			method: "PUT",
+			path: "/api/v1/posts/{id}",
+			description: "Update a user by id",
+			url_param: {
+				name: "id",
+				type: "string"
+			},
+			query_params: null
+		},
+		{
+			method: "DELETE",
+			path: "/api/v1/posts/{id}",
+			description: "Delete a user by id",
+			url_param: {
+				name: "id",
+				type: "string"
+			},
+			query_params: null
 		}
 	];
 	onMount(async () => {
